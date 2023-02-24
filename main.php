@@ -30,7 +30,6 @@
         </div>
 
         <?php
-        $email = '';
         function showError($textErr)
         {
             echo $textErr;
@@ -89,7 +88,7 @@
                         <span class="error"> <?php checkEmail(); ?> </span>
                     </div>
                     <div class="form-login">
-                        <input type="text" placeholder=" " class="password" name="password" value="<?php keepValue('password'); ?>">
+                        <input type="password" placeholder=" " class="password" name="password" value="<?php keepValue('password'); ?>">
                         <label for="password">Mật khẩu</label>
                         <span class="error"> <?php checkPassword(); ?> </span>
                     </div>
