@@ -44,35 +44,38 @@
 
         function checkValidEmail($textValid)
         {
-            if (strpos($_POST['email'], '@gmail.com') == false && strlen($_POST['email']) >= 1 ) {
+            if (strpos($_POST['email'], '@gmail.com') == false && strlen($_POST['email']) >= 1) {
                 showError($textValid);
             }
         }
 
         function checkValidPassword($textValid)
         {
-                $regexp = "/^[A-Z]/";
-                if (strlen($_POST['password']) < 8 && strlen($_POST['password']) >= 1 || !empty($_POST['password']) && preg_match($regexp, $_POST['password']) == false) {
-                    showError($textValid);
-                }
+            $regexp = "/^[A-Z]/";
+            if (strlen($_POST['password']) < 8 && strlen($_POST['password']) >= 1 || !empty($_POST['password']) && preg_match($regexp, $_POST['password']) == false) {
+                showError($textValid);
+            }
         }
 
-        function checkEmail() {
+        function checkEmail()
+        {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 checkEmpty('email', 'Email không được để trống.');
                 checkValidEmail('Email không hợp lệ.');
             }
         }
 
-        function checkPassword() {
+        function checkPassword()
+        {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 checkEmpty('password', 'Mật khẩu không được để trống.');
                 checkValidPassword('Mật khẩu ít nhất 8 kí tự và phải bắt đầu bằng chữ in hoa');
             }
         }
 
-        function keepValue($name) {
-            if(!empty($_POST[$name])) {
+        function keepValue($name)
+        {
+            if (!empty($_POST[$name])) {
                 echo $_POST[$name];
             }
         }
@@ -147,5 +150,4 @@
         </div>
     </div>
 </body>
-
 </html>
