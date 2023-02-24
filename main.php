@@ -30,28 +30,51 @@
         </div>
 
         <?php
-        $email = $password = '';
-        $emailErr = $passwordErr = '';
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if (empty($_POST['email'])) {
-                $emailErr = 'Email không được bỏ trống.';
-            } else {
-                if (strpos($_POST['email'], '@gmail.com') == false) {
-                    $emailErr = 'Email không hợp lệ';
-                } else {
-                    $email = $_POST['email'];
-                }
-            }
+        $email = '';
+        function showError($textErr)
+        {
+            echo $textErr;
+        }
 
-            if (empty($_POST['password'])) {
-                $passwordErr = 'Mật khẩu không được bỏ trống.';
-            } else {
+        function checkEmpty($name, $textEmpty)
+        {
+            if (empty($_POST[$name])) {
+                showError($textEmpty);
+            }
+        }
+
+        function checkValidEmail($textValid)
+        {
+            if (strpos($_POST['email'], '@gmail.com') == false && strlen($_POST['email']) >= 1 ) {
+                showError($textValid);
+            }
+        }
+
+        function checkValidPassword($textValid)
+        {
                 $regexp = "/^[A-Z]/";
-                if (strlen($_POST['password']) < 8 || preg_match($regexp, $_POST['password']) == false) {
-                    $passwordErr = 'Mật khẩu ít nhất 8 kí tự và phải bắt dầu bằng chữ in hoa';
-                } else {
-                    $password = $_POST['password'];
+                if (strlen($_POST['password']) < 8 && strlen($_POST['password']) >= 1 || !empty($_POST['password']) && preg_match($regexp, $_POST['password']) == false) {
+                    showError($textValid);
                 }
+        }
+
+        function checkEmail() {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                checkEmpty('email', 'Email không được để trống.');
+                checkValidEmail('Email không hợp lệ.');
+            }
+        }
+
+        function checkPassword() {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                checkEmpty('password', 'Mật khẩu không được để trống.');
+                checkValidPassword('Mật khẩu ít nhất 8 kí tự và phải bắt đầu bằng chữ in hoa');
+            }
+        }
+
+        function keepValue($name) {
+            if(!empty($_POST[$name])) {
+                echo $_POST[$name];
             }
         }
         ?>
@@ -61,14 +84,14 @@
                 <div class="title">Đăng nhập vào Aliniex</div>
                 <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>" class="form">
                     <div class="form-login">
-                        <input type="text" placeholder=" " class="email" name="email" value="<?php echo $email; ?>">
+                        <input type="text" placeholder=" " class="email" name="email" value="<?php keepValue('email'); ?>">
                         <label for="email">Địa chỉ Email</label>
-                        <span class="error"> <?php echo $emailErr; ?></span>
+                        <span class="error"> <?php checkEmail(); ?> </span>
                     </div>
                     <div class="form-login">
-                        <input type="password" placeholder=" " class="password" name="password" value="<?php echo $password; ?>">
+                        <input type="text" placeholder=" " class="password" name="password" value="<?php keepValue('password'); ?>">
                         <label for="password">Mật khẩu</label>
-                        <span class="error"><?php echo $passwordErr; ?></span>
+                        <span class="error"> <?php checkPassword(); ?> </span>
                     </div>
                     <button class="login" type="submit">ĐĂNG NHẬP</button>
                 </form>

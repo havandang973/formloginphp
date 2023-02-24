@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
@@ -68,7 +68,8 @@ html {
 }
 
 .user .sign-up:hover {
-    background-color: #0dac50;;
+    background-color: #0dac50;
+    ;
     color: white;
 }
 
@@ -108,7 +109,8 @@ html {
 
 
 
-.email, .password {
+.email,
+.password {
     width: 100%;
     box-sizing: border-box;
     box-shadow: 0 2px 4px 0 rgb(0 0 0 / 4%);
@@ -142,7 +144,8 @@ html {
     outline: none;
 }
 
-input:not(:placeholder-shown) + label {
+input:not(:placeholder-shown) + label,
+input:focus+label {
     top: -7px;
     left: 9px;
     font-size: 12px;
@@ -172,7 +175,7 @@ input:not(:placeholder-shown) + label {
     margin-top: 21.6px;
 }
 
-.more a{
+.more a {
     display: block;
     text-decoration: none;
     margin-top: 8px;
@@ -189,7 +192,7 @@ input:not(:placeholder-shown) + label {
 
 .footer {
     width: 100%;
-    background-image: radial-gradient(circle at 1% 1%,#328bf2,#1644ad);
+    background-image: radial-gradient(circle at 1% 1%, #328bf2, #1644ad);
     padding: 28.8px 18px;
     box-sizing: border-box;
 }
@@ -252,7 +255,7 @@ h4 {
     font-weight: 570;
 }
 
-.footer-content > div > a {
+.footer-content>div>a {
     display: block;
     margin-bottom: 7.2px;
     color: #e6f2ff;
@@ -267,18 +270,18 @@ h4 {
 }
 
 .copyright {
-    background-image: radial-gradient(circle at -20% 1%,#328bf2,#1644ad);
+    background-image: radial-gradient(circle at -20% 1%, #328bf2, #1644ad);
     text-align: center;
     padding: 10.8px 0;
     font-size: 14.4px;
-    border-top: 1px solid rgba(0,123,255);   
+    border-top: 1px solid rgba(0, 123, 255);
 }
 
 .copyright p {
     opacity: 0.7;
 }
 
-@media screen and (max-width: 959px){
+@media screen and (max-width: 959px) {
     .footer-section {
         display: block;
     }
@@ -289,7 +292,7 @@ h4 {
     }
 
 }
-    
+
 .error {
     color: red;
     font-size: .7rem;
