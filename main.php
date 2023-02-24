@@ -44,7 +44,7 @@
 
         function checkValidEmail($textValid)
         {
-            if (strpos($_POST['email'], '@gmail.com') == false && strlen($_POST['email']) >= 1) {
+            if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) == false && strlen($_POST['email']) >= 1) {
                 showError($textValid);
             }
         }
@@ -150,4 +150,5 @@
         </div>
     </div>
 </body>
+
 </html>
